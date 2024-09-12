@@ -1,8 +1,8 @@
 import { Routes, Route, NavLink  } from "react-router-dom";
-import HomePage from "path/to/pages/HomePage";
-import MoviesPage from "path/to/pages/MoviesPage";
-import MovieDetailsPage from "path/to/pages/MovieDetailsPage";
-import NotFoundPage from "path/to/pages/NotFoundPage";
+import HomePage from "../pages/HomePage/HomePage";
+import MoviesPage from "../pages/MoviesPage/MoviesPage";
+import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import clsx from 'clsx';
 import css from './App.module.css';
 
@@ -19,10 +19,10 @@ function App() {
           <NavLink to="/" className={buildLinkClass}>
             Home
           </NavLink>
-          <NavLink to="/about" className={buildLinkClass}>
+          <NavLink to="/movies" className={buildLinkClass}>
             About
           </NavLink>
-          <NavLink to="/products" className={buildLinkClass}>
+          <NavLink to="/movies/:movieId" className={buildLinkClass}>
             Products
           </NavLink>
         </nav>
