@@ -6,10 +6,10 @@ import { lazy } from "react";
 
 
 
-const HomePage = lazy(() => import("./Pages/HomePage/HomePage"));
-const MoviesPage = lazy(() => import("./Pages/MoviesPage/MoviesPage"));
-const MovieDetailsPage = lazy(() => import("./Pages/MovieDetailsPage/MovieDetailsPage"));
-const NotFoundPage = lazy(() => import("./Pages/NotFoundPage/NotFoundPage"));
+const HomePage = lazy(() => import("../Pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("../Pages/MoviesPage/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("../Pages/MovieDetailsPage/MovieDetailsPage"));
+const NotFoundPage = lazy(() => import("../Pages/NotFoundPage/NotFoundPage"));
 
 
 const buildLinkClass = ({ isActive }) => {
