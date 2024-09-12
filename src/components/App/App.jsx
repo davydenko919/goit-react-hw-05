@@ -1,10 +1,12 @@
 import { Routes, Route, NavLink  } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
 import MoviesPage from "../pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import clsx from 'clsx';
 import css from './App.module.css';
+import { lazy } from "react";
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
