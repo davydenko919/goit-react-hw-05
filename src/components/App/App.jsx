@@ -1,5 +1,5 @@
 import { Routes, Route, NavLink  } from "react-router-dom";
-
+import axios from "axios";
 import clsx from 'clsx';
 import css from './App.module.css';
 import { lazy, Suspense  } from "react";
@@ -49,4 +49,14 @@ function App() {
   );
 }
 
+
+
+
+
+
+
+
 export default App;
+
+
+
