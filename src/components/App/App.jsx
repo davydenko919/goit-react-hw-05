@@ -5,7 +5,7 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import clsx from 'clsx';
 import css from './App.module.css';
 import { lazy } from "react";
-const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 
 
 const buildLinkClass = ({ isActive }) => {
