@@ -2,7 +2,7 @@ import { Routes, Route, NavLink  } from "react-router-dom";
 
 import clsx from 'clsx';
 import css from './App.module.css';
-import { lazy } from "react";
+import { lazy, Suspense  } from "react";
 
 
 
@@ -33,12 +33,14 @@ function App() {
           </NavLink>
         </nav>
 
+        <Suspense fallback={<div>Loading...</div>}></Suspense>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        
       </div>
     </>
   );
