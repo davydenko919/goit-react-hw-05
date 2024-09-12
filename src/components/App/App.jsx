@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import css from './App.module.css';
 import { lazy } from "react";
 
-// aegvgaevaevaev
+
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
