@@ -1,7 +1,7 @@
 import { Routes, Route, NavLink  } from "react-router-dom";
-import MoviesPage from "../pages/MoviesPage/MoviesPage";
-import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+// import MoviesPage from "../pages/MoviesPage/MoviesPage";
+// import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
+// import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import clsx from 'clsx';
 import css from './App.module.css';
 // import { lazy } from "react";
