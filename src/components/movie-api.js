@@ -3,7 +3,7 @@ import axios from "axios";
 export {
   TrendingMovies,
 //   Movies,
-//   MovieDetails,
+  MovieDetails,
 //   Reviews,
 //   Cast,
 };
@@ -25,4 +25,12 @@ const options = {
       options
     );
     return data.results;
+  };
+
+  const MovieDetails = async (id) => {
+    const { data } = await axios(
+      `https://api.themoviedb.org/3/movie/${id}` ,
+      options
+    );
+    return data;
   };

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { RotatingLines } from 'react-loader-spinner'
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
+import  { Link } from "react-router-dom";
+
 export default function MovieList() {
 
     const [isloading, setIsLoading] = useState(false);
@@ -10,7 +12,7 @@ export default function MovieList() {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-          async function getPhotos() {
+          async function getMovies() {
             try {
               setIsLoading(true);
               const data = await TrendingMovies();
@@ -25,13 +27,20 @@ export default function MovieList() {
             }
           }
     
-          getPhotos();
+          getMovies();
       }, []);
 
     return (
         <>
       <ul>
-        
+      {movies.map((movie) =>(
+        <li  key={movie.id}>
+         <Link to={`/movies/${movie.id}`}>
+              {movie.title}
+            </Link>
+        </li>
+      )
+      )}
       </ul>
       {isloading && <RotatingLines
         visible={true}

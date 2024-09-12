@@ -9,6 +9,8 @@ import MoviesPage from "../Pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../Pages/MovieDetailsPage/MovieDetailsPage";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 
+
+
 // const HomePage = lazy(() => import("../Pages/HomePage/HomePage"));
 // const MoviesPage = lazy(() => import("../Pages/MoviesPage/MoviesPage"));
 // const MovieDetailsPage = lazy(() => import("../Pages/MovieDetailsPage/MovieDetailsPage"));
@@ -31,9 +33,9 @@ function App() {
           <NavLink to="/movies" className={buildLinkClass}>
             About
           </NavLink>
-          <NavLink to="/movies/:movieId" className={buildLinkClass}>
+          {/* <NavLink to="/movies/:movieId" className={buildLinkClass}>
             Products
-          </NavLink>
+          </NavLink> */}
         </nav>
 
         {/* <Suspense fallback={<div>Loading...</div>}></Suspense> */}
