@@ -2,7 +2,7 @@ import { Link, useParams, Outlet } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import { useState, useEffect } from "react";
 import { MovieDetails } from "../../movie-api";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 export default function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
