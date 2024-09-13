@@ -2,10 +2,10 @@ import axios from "axios";
 
 export {
   TrendingMovies,
-//   Movies,
+  SearchMovies,
   MovieDetails,
-//   Reviews,
-//   Cast,
+  MovieReviews,
+  MovieCast,
 };
 
 const options = {
@@ -30,6 +30,30 @@ const options = {
   const MovieDetails = async (id) => {
     const { data } = await axios(
       `https://api.themoviedb.org/3/movie/${id}` ,
+      options
+    );
+    return data;
+  };
+
+  const MovieReviews = async (id) => {
+    const { data } = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/reviews`,
+      options
+    );
+    return data;
+  };
+
+  const MovieCast = async (id) => {
+    const { data } = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/credits`,
+      options
+    );
+    return data;
+  };
+
+  const SearchMovies = async (querry) => {
+    const { data } = await axios(
+      `https://api.themoviedb.org/3/search/movie?query=${querry}&page=1`,
       options
     );
     return data;
