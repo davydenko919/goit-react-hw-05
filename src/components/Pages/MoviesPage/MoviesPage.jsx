@@ -12,8 +12,14 @@ export default function MoviesPage() {
 
 
   const [params , setParam] = useSearchParams();
-  const queryParam = params.get("query") ?? ""; 
+  const queryParam = params.get("query") || ""; 
   console.log(params);
+
+  useEffect(() => {
+    if (queryParam) {
+      setQuery(queryParam);
+    }
+  }, [queryParam]);
    
   const changeQueryParams = (newFilter) => {
     params.set("query", newFilter);
@@ -61,7 +67,7 @@ export default function MoviesPage() {
       </Formik>
       <Toaster />
       <div>
-      <MovieList fetchMovies={() => SearchMovies(query)} />
+      {query && <MovieList fetchMovies={() => SearchMovies(query)} />}
     </div>
     </>
   );
