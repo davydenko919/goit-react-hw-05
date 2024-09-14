@@ -1,6 +1,6 @@
-import { Link, useParams, Outlet } from "react-router-dom";
+import { Link, useParams, Outlet, useLocation } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MovieDetails } from "../../movie-api";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
@@ -9,6 +9,12 @@ export default function MovieDetailsPage() {
   const [info, setInfo] = useState(null);
   const [error, setError] = useState(false);
   const { movieId } = useParams();
+
+
+  const location = useLocation();
+  const backLinkURLRef = useRef(location.state ?? "/movies");
+  
+  
 
   useEffect(() => {
     async function getMovie() {
@@ -43,6 +49,7 @@ export default function MovieDetailsPage() {
       {error && <ErrorMessage />}
       {info && (
         <>
+        <div><Link to={backLinkURLRef.current}>Go back</Link></div>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}
