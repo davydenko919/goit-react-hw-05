@@ -3,8 +3,9 @@ import clsx from "clsx";
 import css from "./App.module.css";
 import { lazy, Suspense } from "react";
 
-const Cast = lazy(() => import("../Cast/Cast"));
-const Reviews = lazy(() => import("../Reviews/Reviews"));
+const Cast = lazy(() => import("../MovieCast/MovieCast"));
+const Reviews = lazy(() => import("../MovieReviews/MovieReviews"));
+import Navigation from "../Navigation/Navigation";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
@@ -13,22 +14,23 @@ const MovieDetailsPage = lazy(() =>
 );
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage/NotFoundPage"));
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+// const buildLinkClass = ({ isActive }) => {
+//   return clsx(css.link, isActive && css.active);
+// };
 
 function App() {
   return (
     <>
       <div className={css.main}>
-        <nav className={css.nav}>
+        {/* <nav className={css.nav}>
           <NavLink to="/" className={buildLinkClass}>
             Home
           </NavLink>
           <NavLink to="/movies" className={buildLinkClass}>
             Movies
           </NavLink>
-        </nav>
+        </nav> */}
+        <Navigation />
 
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
