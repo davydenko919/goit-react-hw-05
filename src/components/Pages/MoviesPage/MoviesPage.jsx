@@ -5,17 +5,22 @@ import { useState, useEffect } from "react";
 import { SearchMovies } from "../../movie-api";
 import toast, { Toaster } from "react-hot-toast";
 import MovieList from "../../MovieList/MovieList";
-import { RotatingLines } from 'react-loader-spinner';
-import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import { useSearchParams } from "react-router-dom";
 
 
 export default function MoviesPage() {
 
-  const [movies, setMovies] = useState([]);
-  const [isloading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
 
-  const [query, setQuery] = useState("");
+  const [params , setParam] = useSearchParams();
+  const queryParam = params.get("query") ?? ""; 
+  console.log(params);
+   
+  const changeQueryParams = (newFilter) => {
+    params.set("query", newFilter);
+    setParam(params);
+  };
+
+  const [query, setQuery] = useState(queryParam);
 
   const handleSearch = (newQuery) => {
 
@@ -28,39 +33,18 @@ export default function MoviesPage() {
     }
     else{
     setQuery(newQuery);
-    setMovies([]);
   }
   };
 
-  useEffect(() => {
-    if (query === "") {
-      return;
-    }
 
-      async function getMovies() {
-        try {
-          setIsLoading(true);
-          const data = await SearchMovies(query);
-          setMovies((prevMovies) => {
-            return [...prevMovies, ...data];
-          });
-          console.log(data);
-        } catch (error) {
-          setError(true);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-
-      getMovies();
-  }, [query]);
 
   return (
     <>
       <Formik
-        initialValues={{ query: "" }}
+        initialValues={{ query: '' }}
         onSubmit={(values, actions) => {
           handleSearch(values.query);
+          changeQueryParams(values.query);
           actions.resetForm();
         }}
       >
@@ -77,23 +61,7 @@ export default function MoviesPage() {
       </Formik>
       <Toaster />
       <div>
-      <p>MoviesPage!</p>
-      {error && <ErrorMessage />}
-      {isloading && <RotatingLines
-          visible={true}
-          height="96"
-          width="96"
-          color="grey"
-          strokeWidth="5"
-          animationDuration="0.75"
-          ariaLabel="rotating-lines-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          />}
-      <MovieList />
-      <p>
-        Please visit out <Link to="/">home page</Link>
-      </p>
+      <MovieList fetchMovies={() => SearchMovies(query)} />
     </div>
     </>
   );

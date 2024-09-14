@@ -52,6 +52,7 @@ export default function MovieDetailsPage() {
               <h1>
                 {info.title}({info.release_date.slice(0, 4)})
               </h1>
+              <p>User Score: {(info.vote_average*10).toFixed(2)}%</p>
               <h2>Overview</h2>
               <p>{info.overview}</p>
               <h3>Geners</h3>

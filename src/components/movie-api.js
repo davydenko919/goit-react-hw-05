@@ -27,6 +27,14 @@ const options = {
     return data.results;
   };
 
+  const SearchMovies = async (querry) => {
+    const { data } = await axios(
+      `https://api.themoviedb.org/3/search/movie?query=${querry}&page=1`,
+      options
+    );
+    return data.results;
+  };
+
   const MovieDetails = async (id) => {
     const { data } = await axios(
       `https://api.themoviedb.org/3/movie/${id}` ,
@@ -51,10 +59,3 @@ const options = {
     return data;
   };
 
-  const SearchMovies = async (querry) => {
-    const { data } = await axios(
-      `https://api.themoviedb.org/3/search/movie?query=${querry}&page=1`,
-      options
-    );
-    return data;
-  };
