@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import MovieList from "../../MovieList/MovieList";
 import { TrendingMovies } from "../../movie-api";
 

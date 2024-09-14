@@ -6,10 +6,11 @@ import { lazy, Suspense } from "react";
 const Cast = lazy(() => import("../Cast/Cast"));
 const Reviews = lazy(() => import("../Reviews/Reviews"));
 
-
 const HomePage = lazy(() => import("../Pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("../Pages/MoviesPage/MoviesPage"));
-const MovieDetailsPage = lazy(() => import("../Pages/MovieDetailsPage/MovieDetailsPage"));
+const MovieDetailsPage = lazy(() =>
+  import("../Pages/MovieDetailsPage/MovieDetailsPage")
+);
 const NotFoundPage = lazy(() => import("../Pages/NotFoundPage/NotFoundPage"));
 
 const buildLinkClass = ({ isActive }) => {
@@ -30,15 +31,15 @@ function App() {
         </nav>
 
         <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
         </Suspense>
       </div>
     </>

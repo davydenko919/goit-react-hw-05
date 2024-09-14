@@ -11,11 +11,8 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(false);
   const { movieId } = useParams();
 
-
   const location = useLocation();
   const backLinkURLRef = useRef(location.state ?? "/movies");
-  
-  
 
   useEffect(() => {
     async function getMovie() {
@@ -50,7 +47,9 @@ export default function MovieDetailsPage() {
       {error && <ErrorMessage />}
       {info && (
         <>
-        <div><Link to={backLinkURLRef.current}>Go back</Link></div>
+          <div>
+            <Link to={backLinkURLRef.current}>Go back</Link>
+          </div>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}
@@ -60,7 +59,7 @@ export default function MovieDetailsPage() {
               <h1>
                 {info.title}({info.release_date.slice(0, 4)})
               </h1>
-              <p>User Score: {(info.vote_average*10).toFixed(2)}%</p>
+              <p>User Score: {(info.vote_average * 10).toFixed(2)}%</p>
               <h2>Overview</h2>
               <p>{info.overview}</p>
               <h3>Geners</h3>
@@ -82,7 +81,7 @@ export default function MovieDetailsPage() {
             </ul>
           </div>
           <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
+            <Outlet />
           </Suspense>
         </>
       )}

@@ -4,7 +4,7 @@ import { MovieReviews } from "../movie-api";
 
 export default function Reviews() {
   const [isLoading, setIsLoading] = useState(false);
-  const [info, setInfo] = useState([]); 
+  const [info, setInfo] = useState([]);
   const [error, setError] = useState(false);
   const { movieId } = useParams();
 
@@ -13,7 +13,7 @@ export default function Reviews() {
       try {
         setIsLoading(true);
         const data = await MovieReviews(movieId);
-        setInfo(data.results || []); 
+        setInfo(data.results || []);
         console.log(data);
       } catch (error) {
         setError(true);
@@ -36,7 +36,7 @@ export default function Reviews() {
   return (
     <div>
       <ul>
-        {info.length > 0 ? ( 
+        {info.length > 0 ? (
           info.map((review) => (
             <li key={review.id}>
               <h3>Author: {review.author}</h3>
@@ -44,7 +44,7 @@ export default function Reviews() {
             </li>
           ))
         ) : (
-          <p>No reviews available</p> 
+          <p>No reviews available</p>
         )}
       </ul>
     </div>

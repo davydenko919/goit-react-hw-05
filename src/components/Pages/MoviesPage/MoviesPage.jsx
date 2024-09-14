@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-// import css from "./MoviesPage.module.css";
 import { Field, Form, Formik } from "formik";
 import { useState, useEffect } from "react";
 import { SearchMovies } from "../../movie-api";
@@ -7,12 +5,9 @@ import toast, { Toaster } from "react-hot-toast";
 import MovieList from "../../MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 
-
 export default function MoviesPage() {
-
-
-  const [params , setParam] = useSearchParams();
-  const queryParam = params.get("query") || ""; 
+  const [params, setParam] = useSearchParams();
+  const queryParam = params.get("query") || "";
   console.log(params);
 
   useEffect(() => {
@@ -20,7 +15,7 @@ export default function MoviesPage() {
       setQuery(queryParam);
     }
   }, [queryParam]);
-   
+
   const changeQueryParams = (newFilter) => {
     params.set("query", newFilter);
     setParam(params);
@@ -29,36 +24,33 @@ export default function MoviesPage() {
   const [query, setQuery] = useState(queryParam);
 
   const handleSearch = (newQuery) => {
+    const notify = () =>
+      toast.error("Enter text for search!", {
+        icon: "🥸",
+      });
 
-    const notify = () => toast.error('Enter text for search!', {
-      icon: '🥸',
-    });
-
-    if(newQuery === ""){
+    if (newQuery === "") {
       notify();
+    } else {
+      setQuery(newQuery);
     }
-    else{
-    setQuery(newQuery);
-  }
   };
-
-
 
   return (
     <>
       <Formik
-        initialValues={{ query: '' }}
+        initialValues={{ query: "" }}
         onSubmit={(values, actions) => {
           handleSearch(values.query);
           changeQueryParams(values.query);
           actions.resetForm();
         }}
       >
-        <Form >
+        <Form>
           <Field
             type="text"
             name="query"
-            placeholder= {query}
+            placeholder={query}
             autoFocus
             autoComplete="off"
           />
@@ -67,8 +59,8 @@ export default function MoviesPage() {
       </Formik>
       <Toaster />
       <div>
-      {query && <MovieList fetchMovies={() => SearchMovies(query)} />}
-    </div>
+        {query && <MovieList fetchMovies={() => SearchMovies(query)} />}
+      </div>
     </>
   );
 }
