@@ -1,8 +1,8 @@
 import { Link, useParams, Outlet, useLocation } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import { useState, useEffect, useRef } from "react";
-import { MovieDetails } from "../../movie-api";
-import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import { MovieDetails } from "../../components/movie-api"; 
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Suspense } from "react";
 
 export default function MovieDetailsPage() {

@@ -1,5 +1,5 @@
-import MovieList from "../../MovieList/MovieList";
-import { TrendingMovies } from "../../movie-api";
+import MovieList from "../../components/MovieList/MovieList";
+import { TrendingMovies } from "../../components/movie-api";
 
 export default function HomePage() {
   return (

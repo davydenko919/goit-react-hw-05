@@ -6,12 +6,12 @@ import { lazy, Suspense } from "react";
 const Cast = lazy(() => import("../Cast/Cast"));
 const Reviews = lazy(() => import("../Reviews/Reviews"));
 
-const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
-const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
-  import("../pages/MovieDetailsPage/MovieDetailsPage")
+  import("../../pages/MovieDetailsPage/MovieDetailsPage")
 );
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
+const NotFoundPage = lazy(() => import("../../pages/NotFoundPage/NotFoundPage"));
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);

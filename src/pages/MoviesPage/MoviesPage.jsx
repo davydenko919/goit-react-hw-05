@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from "formik";
 import { useState, useEffect } from "react";
-import { SearchMovies } from "../../movie-api";
+import { SearchMovies } from "../../components/movie-api";
 import toast, { Toaster } from "react-hot-toast";
-import MovieList from "../../MovieList/MovieList";
+import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
