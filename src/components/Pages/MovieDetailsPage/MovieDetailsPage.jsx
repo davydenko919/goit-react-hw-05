@@ -3,6 +3,7 @@ import { RotatingLines } from "react-loader-spinner";
 import { useState, useEffect, useRef } from "react";
 import { MovieDetails } from "../../movie-api";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import { Suspense } from "react";
 
 export default function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,7 +81,9 @@ export default function MovieDetailsPage() {
               </li>
             </ul>
           </div>
+          <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
+          </Suspense>
         </>
       )}
     </>
